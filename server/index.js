@@ -20,9 +20,9 @@ const sendTokenResponse = (token, res) => {
     })
   );
 };
-app.get('*', function (req, res, next) {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
-  });
+app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  })
 
 app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
