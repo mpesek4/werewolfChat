@@ -9,7 +9,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(pino);
-app.use(express.static(path.join(__dirname, '../public')))
+
+app.use(express.static(path.join(__dirname, '..', 'public')))
+
 console.log("what is config")
 
 const sendTokenResponse = (token, res) => {
