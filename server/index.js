@@ -35,7 +35,6 @@ app.get('/video/token', (req, res) => {
   const room = req.query.room;
   
   
-  
   console.log("what is config", config)
   const token = videoToken(identity, room, config);
   sendTokenResponse(token, res);
