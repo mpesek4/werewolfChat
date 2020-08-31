@@ -50,8 +50,12 @@ app.post('/video/token', (req, res) => {
 
 
 app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-  })
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'), function(err) {
+        if (err) {
+          res.status(500).send(err)
+        }
+      })
+    })
 
 app.listen(process.env.PORT || 3000, () =>
   console.log(`Express server is running on ${process.env.PORT}`)
