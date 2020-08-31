@@ -22,9 +22,7 @@ const sendTokenResponse = (token, res) => {
     })
   );
 };
-app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-  })
+
 
 app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
@@ -50,6 +48,11 @@ app.post('/video/token', (req, res) => {
   const token = videoToken(identity, room, config);
   sendTokenResponse(token, res);
 });
+
+
+app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  })
 
 app.listen(process.env.PORT || 3000, () =>
   console.log(`Express server is running on ${process.env.PORT}`)
